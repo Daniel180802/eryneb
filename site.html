@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171329">
+<title>Notre petit monde ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, serif;
+  background: #100e20;
+  color: #fff0f5;
+  text-align: center;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 20px;
+  background:
+    radial-gradient(ellipse at top, #49305f 0%, transparent 60%),
+    linear-gradient(160deg, #211a38, #100e20);
+}
+
+.moon {
+  font-size: 65px;
+  margin-bottom: 20px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-9px); }
+}
+
+h1 {
+  font-size: clamp(36px, 9vw, 65px);
+  color: #ffd8e7;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: clamp(25px, 6vw, 32px);
+  color: #ffcce1;
+  line-height: 1.3;
+  margin-bottom: 22px;
+}
+
+p {
+  font-size: clamp(16px, 4vw, 18px);
+  line-height: 1.9;
+  color: #f0e3ef;
+}
+
+.subtitle {
+  max-width: 520px;
+  margin-bottom: 30px;
+  color: #e9d7f2;
+}
+
+button {
+  border: 1px solid #e9a8cf;
+  background: #a65d91;
+  color: white;
+  padding: 14px 23px;
+  min-height: 48px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+button:hover {
+  background: #c77eae;
+}
+
+button:focus-visible {
+  outline: 3px solid #ffd8e7;
+  outline-offset: 3px;
+}
+
+section {
+  width: min(100% - 36px, 820px);
+  margin: auto;
+  padding: 60px 0;
+  scroll-margin-top: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,200,230,.23);
+  border-radius: 20px;
+  padding: 28px;
+  margin: 20px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+.music-caption {
+  margin-top: 15px;
+  color: #ffd5e8;
+}
+
+.envelope {
+  font-size: 60px;
+  border: none;
+  background: transparent;
+  padding: 15px;
+  margin: 12px;
+  min-height: 75px;
+}
+
+.envelope:hover {
+  background: transparent;
+  transform: scale(1.08);
+}
+
+.hidden-message {
+  display: none;
+  background: rgba(255,190,220,.1);
+  border-radius: 15px;
+  border: 1px solid rgba(255,200,230,.2);
+  padding: 23px;
+  margin-top: 20px;
+  animation: appear .5s ease;
+}
+
+.hidden-message.visible {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.secret-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 540px;
+  margin: 25px auto;
+}
+
+.secret-button {
+  min-height: 90px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,200,230,.2);
+  color: #ffe8f1;
+  padding: 12px 7px;
+}
+
+.secret-button span {
+  display: block;
+  font-size: 28px;
+}
+
+#surpriseText {
+  min-height: 70px;
+  margin-top: 22px;
+  color: #ffd5e8;
+  font-size: 19px;
+}
+
+.heart {
+  color: #ff8ebd;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+footer {
+  padding: 35px 20px;
+  color: #c9aecb;
+  background: #0b0916;
+  line-height: 2;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 20px;
+  }
+
+  section {
+    width: calc(100% - 30px);
+    padding: 48px 0;
+  }
+
+  .card {
+    padding: 20px 17px;
+    border-radius: 16px;
+  }
+
+  .secret-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .secret-button {
+    min-height: 85px;
+    font-size: 15px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ACCUEIL -->
+<header class="hero">
+  <div class="moon">🌙</div>
+
+  <h1>Surprise pour Eryne Bodet  ❤️</h1>
+
+  <p class="subtitle">
+    Un petit endroit rien qu'à nous...
+    <br>
+    Parce que certaines personnes deviennent spéciales
+    sans même être à côté de nous.
+  </p>
+
+  <button onclick="goTo('histoire')">
+    Découvrir notre monde ✨
+  </button>
+</header>
+
+<main>
+
+<!-- HISTOIRE -->
+<section id="histoire">
+  <h2>Notre petite histoire 💌</h2>
+
+  <div class="card">
+    <p>
+      Je ne sais pas exactement à quel moment tu as pris
+      autant de place dans ma vie...
+      <br><br>
+      Mais aujourd'hui, tes messages,
+      ton humour et ta façon d'être font partie
+      de mes petits bonheurs.
+      <br><br>
+      La distance nous sépare parfois,
+      mais elle n'empêche pas deux personnes
+      de créer quelque chose de beau.
+    </p>
+  </div>
+</section>
+
+<!-- MUSIQUE -->
+<section id="chanson">
+  <h2>Ta petite chanson 🎶</h2>
+
+  <div class="card">
+    <p>
+      Cette chanson me fait penser à toi. ❤️
+      <br><br>
+      Installe-toi confortablement et profite
+      de ta petit moment musical.
+    </p>
+
+    <audio controls preload="metadata" style="width: 100%; margin-top: 22px;">
+      <source src="atlas.mp3" type="audio/mpeg">
+      Ton navigateur ne prend pas en charge l'audio.
+    </audio>
+
+    <p class="music-caption">
+      ♡ je espere que tu as aime ♡
+    </p>
+  </div>
+</section>
+
+<!-- LETTRE -->
+<section>
+  <h2>Une lettre pour toi 💗</h2>
+
+  <p>Clique sur l'enveloppe pour découvrir ton message.</p>
+
+  <button class="envelope"
+    onclick="toggleLetter(this)"
+    aria-expanded="false"
+    aria-controls="letter">
+    💌
+  </button>
+
+  <div class="hidden-message" id="letter">
+    <p>
+      Mon amour Eryne,
+      <br><br>
+      Je voulais simplement te rappeler que tu es
+      une personne importante pour moi.
+      <br><br>
+      J'aime nos conversations, nos délires,
+      nos petites habitudes et tous ces moments
+      où tu arrives à me faire du bien.
+      <br><br>
+      Je ne sais pas ce que l'avenir nous réserve,
+      mais j'ai envie de continuer à découvrir
+      ce petit chose que nous construisons ensemble.
+      <br><br>
+      Prends soin de toi.
+      <br><br>
+      Avec toute mon affection ❤️
+    </p>
+  </div>
+</section>
+
+<!-- MESSAGES SECRETS -->
+<section>
+  <h2>Petits secrets ✨</h2>
+
+  <p>
+    Chaque petit symbole cache une pensée.
+    Touche les pour découvrir les messages.
+  </p>
+
+  <div class="secret-grid">
+    <button class="secret-button" onclick="showSecret(0)">
+      <span>💗</span>Un petit mot
+    </button>
+
+    <button class="secret-button" onclick="showSecret(1)">
+      <span>🌷</span>Une pensée
+    </button>
+
+    <button class="secret-button" onclick="showSecret(2)">
+      <span>☁️</span>Un sourire
+    </button>
+
+    <button class="secret-button" onclick="showSecret(3)">
+      <span>🧸</span>Un souvenir
+    </button>
+
+    <button class="secret-button" onclick="showSecret(4)">
+      <span>🎀</span>Une promesse
+    </button>
+
+    <button class="secret-button" onclick="showSecret(5)">
+      <span>🌙</span>Un câlin
+    </button>
+  </div>
+
+  <div id="secretText"
+       class="hidden-message"
+       aria-live="polite"></div>
+</section>
+
+<!-- SURPRISE -->
+<section>
+  <h2>Une petite surprise pour toi 🎁</h2>
+
+  <p>
+    Tu veux découvrir une autre raison
+    pour laquelle tu es spéciale ?
+  </p>
+
+  <br>
+
+  <button onclick="newSurprise()">
+    Clique ici plusier fois ❤️
+  </button>
+
+  <div id="surpriseText" aria-live="polite"></div>
+</section>
+
+<!-- FUTUR -->
+<section>
+  <h2>Et un jour... 🌷</h2>
+
+  <div class="card">
+    <p>
+      Un jour, il n'y aura peut-être plus besoin
+      d'attendre les messages pour se retrouver.
+      <br><br>
+      On pourra partager des moments simples :
+      rire ensemble, se promener, parler de tout
+      et de rien, et profiter simplement
+      d'être l'un près de l'autre.
+      <br><br>
+      En attendant, profitons de chaque étape,
+      sans précipiter les choses.
+    </p>
+  </div>
+</section>
+
+<!-- FIN -->
+<section>
+  <div class="heart">♥</div>
+
+  <h2>Merci d'être toi Eryne</h2>
+
+  <p>
+    Ce petit site est une façon de te dire
+    que tu as une jolie place dans mon monde.
+    <br><br>
+    <strong>Je t'aime fort ❤️</strong>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  Créé avec affection, juste pour toi.
+  <br>
+  Notre petit monde ❤️
+</footer>
+
+<script>
+
+function goTo(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function toggleLetter(button) {
+  const letter = document.getElementById("letter");
+  const visible = letter.classList.toggle("visible");
+
+  button.setAttribute("aria-expanded", visible);
+
+  if (visible) {
+    letter.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }
+}
+
+const secrets = [
+  "Ton sourire fait partie de mes choses préférées. ❤️",
+  "Même à distance, tu arrives à illuminer mes journées.",
+  "J'aime nos conversations, même les plus simples.",
+  "Tu es une personne que j'ai envie de continuer à découvrir.",
+  "Je garde précieusement tous nos petits moments.",
+  "Si je pouvais, je t'offrirais un câlin à travers cet écran. 💗"
+];
+
+function showSecret(index) {
+  const box = document.getElementById("secretText");
+  box.textContent = secrets[index];
+  box.classList.add("visible");
+
+  box.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
+const surprises = [
+  "Petit rappel : tu es importante pour moi. ❤️",
+  "J'espère que tu souris en découvrant ce site.",
+  "Si tu lis ceci, sache que quelqu'un pense à toi.",
+  "Un jour, on créera de beaux souvenirs ensemble.",
+  "Tu as une façon bien à toi de rendre mes journées plus belles.",
+  "Un petit bisou virtuel rien que pour toi. 💗"
+];
+
+let lastSurprise = -1;
+
+function newSurprise() {
+  let random;
+
+  do {
+    random = Math.floor(Math.random() * surprises.length);
+  } while (random === lastSurprise);
+
+  lastSurprise = random;
+
+  document.getElementById("surpriseText").textContent =
+    surprises[random];
+}
+
+</script>
+
+</body>
+</html>
